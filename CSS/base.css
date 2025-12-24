@@ -1,0 +1,36 @@
+:root {
+    --primary: #003049;
+    --secondary: #00b4d8;
+    --accent: #fcbf49;
+    --dark: #001d2f;
+    --light-bg: #f5f7fa;
+    --white: #ffffff;
+    --text: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+    direction: rtl;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SURF CLUB - צור קשר</title>
+<link rel="stylesheet" href="../CSS/base.css">
+<link rel="stylesheet" href="../CSS/contact.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="logo">
+        <img src="../PIC/לוגו (1).png" alt="לוגו" style="height: 60px;">
+    </div>
+    <nav>
+        <a href="home.html">דף הבית</a>
+        <a href="weather.html">מזג אוויר</a>
+        <a href="products.html">מוצרים</a>
+        <a href="contact.html">צור קשר</a>
+    </nav>
+</header>
+
+<main class="main-content">
+<section class="contact-section">
+    <h2>📩 צור קשר</h2>
+    <p>נשמח לשמוע ממך! מלאי את הטופס ונחזור בהקדם.</p>
+
+    <form class="contact-form" id="contactForm" action="#" method="POST" novalidate>
+        <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> שם מלא <span>*</span></label>
+            <input type="text" id="name" name="full_name" placeholder="הכנס את שמך..." required>
+            <span class="error-message" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> אימייל <span>*</span></label>
+            <input type="email" id="email" name="email_address" placeholder="your@email.com" required>
+            <span class="error-message" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="message"><i class="fas fa-comment"></i> הודעה <span>*</span></label>
+            <textarea id="message" name="message" rows="5" placeholder="איך אפשר לעזור?" required></textarea>
+            <span class="error-message" id="messageError"></span>
+        </div>
+
+        <button type="submit" class="submit-btn">שלח הודעה <i class="fas fa-paper-plane"></i></button>
+    </form>
+</section>
+</main>
+
+<script>
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit', function(e) {
+    let valid = true;
+    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+    const name = document.getElementById('name');
+    if (name.value.trim() === '') {
+        document.getElementById('nameError').textContent = 'אנא הכנס שם מלא';
+        valid = false;
+    }
+
+    const email = document.getElementById('email');
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (email.value.trim() === '') {
+        document.getElementById('emailError').textContent = 'אנא הכנס כתובת אימייל';
+        valid = false;
+    } else if (!email.value.match(emailPattern)) {
+        document.getElementById('emailError').textContent = 'כתובת אימייל לא חוקית';
+        valid = false;
+    }
+
+    const message = document.getElementById('message');
+    if (message.value.trim() === '') {
+        document.getElementById('messageError').textContent = 'אנא כתוב הודעה';
+        valid = false;
+    }
+
+    if (!valid) e.preventDefault();
+});
+</script>
+</body>
+</html>
